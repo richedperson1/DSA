@@ -1,3 +1,4 @@
+# methods 1
 class Solution:
     def duplicates_1(self, arr, n):
         dist = {}
@@ -14,6 +15,8 @@ class Solution:
 
         return sorted(ans) if len(ans) > 0 else [-1]
 
+# methods 2
+
 
 def duplicates_2(arr, n):
     arr = sorted(arr)
@@ -24,14 +27,27 @@ def duplicates_2(arr, n):
             ans.append(arr[i])
             while i < n-1 and arr[i] == arr[i+1]:
                 i += 1
-
         else:
             i += 1
-            # continue
-
     return ans
 
 
-que_arr = [0, 0]
+# methods 3
+
+que_arr = [1, 3, 4, 2, 2]
 n = len(que_arr)
-print(duplicates_2(que_arr, n))
+arr = que_arr
+slow = 0
+fast = 0
+while True:
+    fast = arr[arr[fast]]
+    slow = arr[slow]
+    if slow == fast:
+        break
+
+find = 0
+while find != fast:
+    fast = arr[fast]
+    find = arr[find]
+
+print(find)
