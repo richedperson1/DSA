@@ -54,3 +54,32 @@ def findTwoElement(arr, n):
 Time complexity : O(n)
 Space complexity: O(n)
 """
+
+# Method 3
+
+
+def repeatedNumber(A):
+
+    length = len(A)
+    Sum_N = (length * (length + 1)) // 2
+    Sum_NSq = ((length * (length + 1) *
+                (2 * length + 1)) // 6)
+
+    missingNumber, repeating = 0, 0
+
+    for i in range(len(A)):
+        Sum_N -= A[i]
+        Sum_NSq -= A[i] * A[i]
+
+    missingNumber = (Sum_N + Sum_NSq // Sum_N) // 2
+    repeating = missingNumber - Sum_N
+
+    ans = []
+    ans.append(repeating)
+    ans.append(missingNumber)
+
+    return ans
+
+
+arr = [1, 2, 3, 3]
+print(repeatedNumber(arr))
