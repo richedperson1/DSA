@@ -42,3 +42,23 @@ if check_sort(arr):
     print("Array is sorted")
 else:
     print("Array is Un-sorted")
+
+
+"""
+checking sorting of array using pointer i
+"""
+
+brr = [1, -2]
+
+
+def check_sort(arr, i):
+    l = len(arr)
+    if i == l-1 or i == l:
+        return True
+    elif arr[i] > arr[i+1]:
+        return False
+
+    return check_sort(arr, i+1)
+
+
+print("Is array is sorted : ", check_sort(brr, 0))
