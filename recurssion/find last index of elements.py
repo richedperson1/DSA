@@ -5,7 +5,7 @@ You should start traversing your array from 0, not from (N - 1).
 Do this recursively. Indexing in the array starts from 0.
 
 """
-arr = [1, 7, 7, 7]
+arr = [1, 7, 7, 4, 7+1, 8]
 k = 7
 
 n = len(arr)
@@ -36,5 +36,22 @@ def check_index_b(arr, i, k):
     return check_index_b(arr, i-1, k)
 
 
-print(check_index_b(arr, len(arr)-1, k))
+def check_index_best(arr, i, k):
+    if i == len(arr):
+        return -1
+
+    # In first small has -1 if last elements is not k
+    small = check_index_best(arr, i+1, k)
+    if small == -1:  # This step activate for last step's only
+        if arr[i] == k:
+            return i
+        else:
+            return -1
+
+    else:
+        return small  # It well help to get index of elements !
+
+
+print(check_index_b(arr, len(arr)-1,  k))
 print(check_index(arr,  k))
+print(check_index_best(arr, 0,  k))
