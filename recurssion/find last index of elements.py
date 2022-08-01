@@ -15,17 +15,16 @@ def check_index(arr, k):
     if len(arr) == 0:
         return -1
 
-    elif arr[-1] == k:
-        return 0
+    # In first small has -1 if last elements is not k
+    small = check_index(arr[1:], k)
+    if small == -1:  # This step activate for last step's only
+        if arr[0] == k:
+            return 0
+        else:
+            return -1
 
-    arr.pop()
-    small = check_index(arr, k)
-    if small == -1:
-        return -1
     else:
-        # small += 1
-        # small = n-small
-        return n-small
+        return small+1  # It well help to get index of elements !
 
 
 def check_index_b(arr, i, k):
