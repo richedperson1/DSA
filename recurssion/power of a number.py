@@ -34,9 +34,16 @@ def divide_and_conquer(num, power):
         ans = divide_and_conquer(num, mid)
         c = ans*ans        # Smart move to calculate tree output
         if power & 1 == 1:
-            return c*num
+            return (c*num) % 10e9+7
         else:
-            return c
+            return c % 10e9+7
 
 
-print(divide_and_conquer(361, 163) == cal_power(361, 163))
+n = 223
+r = int(str(n)[::-1])
+# print(divide_and_conquer(n, r) == cal_power(n, r))
+
+print(divide_and_conquer(n, r))
+print(cal_power(n, r))
+
+print(686524215/2)
