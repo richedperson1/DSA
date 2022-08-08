@@ -60,4 +60,49 @@ def major(arr, n):
         return -1
 
 
-print(major(arr, n))
+# print(major(arr, n))
+
+arr = [1]
+
+
+def major_using_for(arr):
+    dist = 1
+    arr = sorted(arr)
+    n = len(arr)
+    local = 1
+    ans = arr[0]
+    for i in range(1, n):
+        if arr[i-1] == arr[i]:
+            local += 1
+            print(local)
+            if local > dist:
+                dist = max(local, dist)
+                ans = arr[i]
+        else:
+            local = 1
+    print(dist)
+    if dist > (n//2):
+        return ans
+    else:
+        return -1
+
+
+print(major_using_for(arr))
+
+# Time complexity O(n) and Space Complexity O(1)
+
+
+def major_voting(arr):
+    major = arr[0]
+    count = 1
+    n = len(arr)
+    for i in range(1, n):
+        if count == 0:
+            count += 1
+            major = arr[i]
+        elif major == arr[i]:
+            count += 1
+        else:
+            count -= 1
+
+    return major
