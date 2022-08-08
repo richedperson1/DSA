@@ -90,6 +90,7 @@ def major_using_for(arr):
 print(major_using_for(arr))
 
 # Time complexity O(n) and Space Complexity O(1)
+# Demo link --> https://www.cs.utexas.edu/~moore/best-ideas/mjrty/index.html
 
 
 def major_voting(arr):
