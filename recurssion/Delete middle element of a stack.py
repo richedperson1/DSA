@@ -40,5 +40,5 @@ class Solution:
 arr = [1, 2, 3, 4]
 obj = Solution()
 print(obj.deleteMid(arr, len(arr)))
-# print(obj.function(arr, 2))
-# print((len(arr))//2)
+print(obj.function(arr, 2))
+print((len(arr))//2)
