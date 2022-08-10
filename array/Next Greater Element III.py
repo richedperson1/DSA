@@ -14,23 +14,28 @@ Output: -1
 
 
 class Solution:
-    def nextGreaterElement(self, n: int) -> int:
-        n = list(str(n))
+    def nextGreaterElement(self, arr: int) -> int:
+        arr = list(str(arr))
         flag = False
-        for i in range(len(n)-1, 0, -1):
-            if int(n[i]) > int(n[i-1]):
-                flag = True
-                n[i], n[i-1] = n[i-1], n[i]
-
-        if flag == False:
+        i = len(arr)-1
+        while i > 0 and arr[i] <= arr[i-1]:
+            i -= 1
+        if i <= 0:
             return -1
 
-        ret = int(''.join(n))
+        j = i
+        while j+1 < len(arr) and arr[j+1] > arr[i-1]:
+            j += 1
 
-        return ret if ret < 1 << 31 else -1
+        arr[j], arr[i-1] = arr[i-1], arr[j]
+        arr[i:] = arr[i:][::-1]
+
+        result = int("".join(arr))
+        return result if result < (1 << 31) else -1
+
 
 # for
+num = 11
 
-
-obj = Solution().nextGreaterElement(21)
+obj = Solution().nextGreaterElement(num)
 print(obj)
