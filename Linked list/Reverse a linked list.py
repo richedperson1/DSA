@@ -41,11 +41,26 @@ def reverse_ll(head):
     print(head.data)
 
 
+def reverse_ll_recur(head, prev):
+    if head == None:
+        head = prev
+        return head
+    next = head.next
+    head.next = prev
+    prev = head
+    head = next
+    return reverse_ll_recur(head, prev)
+
+
+def reverse_ll_recursion(head):
+    return reverse_ll_recur(head, prev=None)
+
+
 if __name__ == "__main__":
     head = None
     link_obj = linked(head)
     link_obj.create_ll()
     link_obj.printing_linked_list()
     head = link_obj.head
-    reverse_ll(head)
-    # linked.printing_linked_list_external(head)
+    obj = reverse_ll_recursion(head)
+    linked.printing_linked_list_external(obj)
