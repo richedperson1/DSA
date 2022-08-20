@@ -3,6 +3,9 @@ class node:
         self.data = data
         self.next = next
 
+    def __repr__(self) -> str:
+        return str(self.data)
+
 
 class linked:
     def __init__(self, head):
