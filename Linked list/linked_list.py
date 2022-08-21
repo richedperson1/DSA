@@ -25,6 +25,12 @@ class linked:
         curr.next = new
         self.tail = new
 
+    def add_node(self, node):
+        curr = self.head
+        while curr.next != None:
+            curr = curr.next
+        curr.next = node
+
     def create_ll(self, arr=[2, 4, 5, 6, 8, 9]):
         flag = False
 
@@ -49,6 +55,7 @@ class linked:
                 new = node(num)
                 curr.next = new
                 curr = new
+        self.tail = curr
         return self.head
 
     def printing_linked_list(self):
