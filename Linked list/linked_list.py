@@ -55,7 +55,7 @@ class linked:
                 new = node(num)
                 curr.next = new
                 curr = new
-        self.tail = curr
+        self.tail = new
         return self.head
 
     def printing_linked_list(self):
@@ -85,3 +85,15 @@ class linked:
                 print(curr.data, end=' ----> ')
             curr = curr.next
         print('')
+
+    def printing_circular_linked_list_external(head):
+        """
+        This function printing linked list elements
+
+        """
+        curr = head
+        while curr.next != head:
+            print(curr.data, end=" ---> ")
+            curr = curr.next
+
+        print(curr.data)
