@@ -81,16 +81,18 @@ def sort_0s_1s_2s(head):
     else:
         zero_t.next = one.next
     one_t.next = two.next
-    two_t = None
+    two_t.next = None
     head = zero.next
     return head
 
 
 if __name__ == "__main__":
     linked_list = linked(None)
-    arr = [0,  0, 2,  0, 2, 2]
+    arr = [2, 1, 0]
     linked_list.create_ll(arr)
     head = linked_list.head.next
     # head_2 = sort_linked(head)
     head_3 = sort_0s_1s_2s(head)
+    # print(head_3.next.data)
+    # print(head_3.next.next.next.data)
     linked.printing_linked_list_external(head_3)
