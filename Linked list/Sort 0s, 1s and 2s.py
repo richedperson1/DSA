@@ -93,6 +93,4 @@ if __name__ == "__main__":
     head = linked_list.head.next
     # head_2 = sort_linked(head)
     head_3 = sort_0s_1s_2s(head)
-    # print(head_3.next.data)
-    # print(head_3.next.next.next.data)
     linked.printing_linked_list_external(head_3)
