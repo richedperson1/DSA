@@ -20,4 +20,18 @@ def print_binary_tree(root):
         print_binary_tree(root.right)
 
 
-print_binary_tree(first_node)
+def printTreeDetails(root):
+    if root == None:
+        return
+    print(root.data, end=":")
+    if root.left != None:
+        print("L :----> ", root.left.data, end=',')
+    if root.right != None:
+        print("R :----> ", root.right.data, end="")
+    print()
+    printTreeDetails(root.left)
+    printTreeDetails(root.right)
+
+
+# print_binary_tree(first_node)
+printTreeDetails(first_node)
