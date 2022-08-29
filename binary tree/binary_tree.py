@@ -4,7 +4,8 @@ class root:
         self.left = None
         self.right = None
 
-    def print_tree(self, root):
+    @staticmethod
+    def print_tree(root):
         if root == None:
             return
         print(root.data, end=" : ")
@@ -13,5 +14,5 @@ class root:
         if root.right != None:
             print(" R ", root.right.data, end="")
         print()
-        self.print_tree(root.left)
-        self.print_tree(root.right)
+        root.print_tree(root.left)
+        root.print_tree(root.right)
