@@ -16,3 +16,16 @@ class root:
         print()
         root.print_tree(root.left)
         root.print_tree(root.right)
+
+
+class createTree:
+    def createTreeUser(rootData=None) -> root:
+        rootData = int(input("Enter the value : "))
+        if rootData == -1:
+            return None
+        rootNode = root(rootData)
+        leftNode = createTree()
+        rightNode = createTree()
+        rootNode.left = leftNode
+        rootNode.right = rightNode
+        return rootNode
