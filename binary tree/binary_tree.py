@@ -19,13 +19,13 @@ class root:
 
 
 class createTree:
-    def createTreeUser(rootData=None) -> root:
+    def createTreeUser(self) -> root:
         rootData = int(input("Enter the value : "))
         if rootData == -1:
             return None
         rootNode = root(rootData)
-        leftNode = createTree()
-        rightNode = createTree()
+        leftNode = self.createTreeUser()
+        rightNode = self.createTreeUser()
         rootNode.left = leftNode
         rootNode.right = rightNode
         return rootNode
