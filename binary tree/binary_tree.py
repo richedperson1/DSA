@@ -29,3 +29,28 @@ class createTree:
         rootNode.left = leftNode
         rootNode.right = rightNode
         return rootNode
+
+
+class cloning:
+    def clone(self, nodes, dist):
+        if nodes == None:
+            return dist
+        new = root(nodes.data)
+        dist[nodes] = new
+        self.clone(nodes.left, dist)
+        self.clone(nodes.right, dist)
+        return dist
+
+    def cloneTree(self, first, form):
+        if first == None:
+            return form
+        item = form[first]
+        item.left = form[first.left]
+        item.right = form[first.right]
+        self.cloneTree(first.left, form)
+        self.cloneTree(first.right, form)
+
+    def cloneWholeTree(self, fromReplication):
+        cloneItem = self.clone(fromReplication, {None: None})
+        self.cloneTree(fromReplication, cloneItem)
+        return cloneItem[fromReplication]
