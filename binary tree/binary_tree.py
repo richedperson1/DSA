@@ -1,3 +1,6 @@
+import queue
+
+
 class root:
     def __init__(self, data):
         self.data = data
@@ -28,6 +31,31 @@ class createTree:
         rightNode = self.createTreeUser()
         rootNode.left = leftNode
         rootNode.right = rightNode
+        return rootNode
+
+    def createTreeUsingList(self, rData, lst):
+        rootNode = root(rData)
+        binarQue = queue.Queue()
+        binarQue.put(rootNode)
+        i = 0
+        while not binarQue.empty() and i < len(lst):
+            curr = binarQue.get()
+            if lst[i] != -1:
+                newLeft = root(lst[i])
+                curr.left = newLeft
+                binarQue.put(newLeft)
+                i += 1
+            elif lst[i] == -1:
+                i += 1
+
+            if lst[i] != -1:
+                newRight = root(lst[i])
+                curr.right = newRight
+                binarQue.put(newRight)
+                i += 1
+            elif lst[i] == -1:
+                i += 1
+
         return rootNode
 
 
