@@ -33,8 +33,13 @@ class createTree:
         rootNode.right = rightNode
         return rootNode
 
-    def createTreeUsingList(self, rData, lst):
-        rootNode = root(rData)
+    def createTreeUsingList(self, lst, rData=None):
+        if rData == None:
+            rootNode = root(lst[0])
+            lst = lst[1:]
+        else:
+            rootNode = root(rData)
+
         binarQue = queue.Queue()
         binarQue.put(rootNode)
         i = 0
