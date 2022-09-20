@@ -44,3 +44,4 @@ class createTree:
                 curr.nodes.append(new)
                 pastNode.put(new)
             ind += 1
+        return rootNode
