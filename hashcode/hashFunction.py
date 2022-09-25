@@ -48,3 +48,23 @@ class map:
                 curr = curr.next
             return "Not preset"
         return "Not present"
+
+    def deleteKey(self, key):
+        hc = hash(key)
+        index = self.getHashCode(hc)
+        if self.buckets[index] == None:
+            return "Index not founds"
+        elif self.buckets[index].key == key:
+            items = self.buckets[index]
+            self.buckets[index] = self.buckets[index].next
+            return items.key
+        prev = None
+        curr = self.buckets[index]
+        head = curr
+        while curr:
+            if curr.key == key:
+                prev.next = curr.next
+                return curr.key
+            prev = curr
+            curr = curr.next
+        self.buckets[index] = head
