@@ -7,7 +7,7 @@ class mapNode:
 
 class map:
     def __init__(self) -> None:
-        self.bucketSize = 20
+        self.bucketSize = 5
         self.buckets = [None for i in range(self.bucketSize)]
         self.counts = 0
 
@@ -16,6 +16,19 @@ class map:
 
     def getHashCode(self, code):
         return abs(code) % self.bucketSize
+
+    def rehashe(self):
+        temp = self.buckets
+        self.buckets = [None for i in range(self.bucketSize*2)]
+        self.bucketSize = self.bucketSize*2
+        self.counts = 0
+        for head in temp:
+            while head:
+                self.insertData(head.key, head.val)
+                head = head.next
+
+    def getLoadFactorValue(self):
+        return self.counts/self.bucketSize
 
     def insertData(self, key, val, functionCode=None):
         if functionCode != None:
@@ -34,6 +47,9 @@ class map:
         newNode.next = curr
         self.buckets[index] = newNode
         self.counts += 1
+        loadFactor = self.counts/self.bucketSize
+        if loadFactor >= 0.7:
+            self.rehashe()
 
     def search(self, key):
         hc = hash(key)
@@ -57,6 +73,7 @@ class map:
         elif self.buckets[index].key == key:
             items = self.buckets[index]
             self.buckets[index] = self.buckets[index].next
+            self.counts -= 1
             return items.key
         prev = None
         curr = self.buckets[index]
@@ -64,6 +81,7 @@ class map:
         while curr:
             if curr.key == key:
                 prev.next = curr.next
+                self.counts -= 1
                 return curr.key
             prev = curr
             curr = curr.next
