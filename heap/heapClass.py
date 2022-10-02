@@ -1,4 +1,4 @@
-from heapClass import *
+# from heapClass import *
 
 
 class heap:
@@ -56,26 +56,28 @@ class heap:
         self.storage[a], self.storage[b] = self.storage[b], self.storage[a]
 
     def sortArray(self):
-
-        while self.size > 1:
+        i = 1
+        arr = [0]*self.size
+        while self.size >= 1:
+            self.swap(a=1, b=self.size)
+            arr[self.size-1] = self.storage[self.size]
+            self.sortHelper(1)
+            i += 1
             self.size -= 1
-            self.swap(a=1, b=-1)
-            self.size -= 1
-            self.hepify(self.storage, 1, self.size)
         return self.storage
 
-    # def sortHelper(self,index):
-    #     largest = index
-    #     leftSide = 2*index
-    #     rightSide = 2*index+1
-    #     if leftSide < self.size and self.storage[leftSide] > self.storage[index]:
-    #         index = leftSide
-    #     if rightSide < self.size and self.storage[rightSide] > self.storage[index]:
-    #         index = rightSide
+    def sortHelper(self, index):
+        largest = index
+        leftSide = 2*index
+        rightSide = 2*index+1
+        if leftSide < self.size and self.storage[leftSide] > self.storage[index]:
+            index = leftSide
+        if rightSide < self.size and self.storage[rightSide] > self.storage[index]:
+            index = rightSide
 
-    #     if largest != index:
-    #         self.swap(index, largest)
-    #         self.sortHelper()
+        if largest != index:
+            self.swap(index, largest)
+            self.sortHelper(largest)
 
     def hepify(self, arr, index, size):
         largest = index
