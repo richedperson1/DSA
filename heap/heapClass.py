@@ -1,6 +1,3 @@
-# from heapClass import *
-
-
 class heap:
     def __init__(self):
         self.storage = [0]
