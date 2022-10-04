@@ -13,6 +13,5 @@ for item in items:
             heapq.heappush(heap, -item)
             continue
 
-# print(heap)
 heapq.heapify(items)
 print(heapq.nsmallest(5, items))
