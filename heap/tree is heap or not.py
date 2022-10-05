@@ -4,7 +4,6 @@ from binary_tree import *
 arr = [8, 7, 6, -1, -1, 5, 4]
 tree = createTree()
 nodes = tree.createTreeUsingList(arr)
-# root.print_tree(nodes)
 
 
 def isHeap(root):
