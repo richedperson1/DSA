@@ -17,3 +17,17 @@ def sorting(arr, i):
 
 
 print(sorting(arr, 0))
+
+# check is array sorted ?
+
+arr = [2, 3, 4, 15, 6]
+
+
+def checkSorting(arr):
+    if len(arr) <= 1:
+        return True
+
+    return arr[0] < arr[1] and checkSorting(arr[1:])
+
+
+print(checkSorting(arr))
