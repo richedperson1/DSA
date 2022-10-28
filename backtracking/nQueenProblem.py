@@ -53,7 +53,7 @@ def nQueenPossible(n, board, i):
 
 if __name__ == "__main__":
     quen = 5
-    n = 15
+    n = 5
     board = [[0 for i in range(n)] for i in range(n)]
 
     ans = nQueenPossible(quen, board, 0)
