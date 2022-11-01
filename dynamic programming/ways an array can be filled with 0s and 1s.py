@@ -29,9 +29,24 @@ def nth_term(n):
     return c
 
 
-print(nth_term(3))
+# print(nth_term(3))
 
 
+# Method 1.1
+
+def n_size_array_fill_1_0(n, ind, pre_one):
+    if ind >= n:
+        return 1
+    ans = 0
+    ans += n_size_array_fill_1_0(n, ind+1, False)
+    if pre_one == False:
+        ans += n_size_array_fill_1_0(n, ind+1, True)
+
+    return ans
+
+
+for ii in range(1, 10):
+    print(n_size_array_fill_1_0(ii, 0, False))
 # Method 2
 """
 Short-Cut Used
