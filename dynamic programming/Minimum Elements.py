@@ -122,3 +122,6 @@ dp = [0]*(n+1)
 num = [17, 10, 5]
 ans = mini_cost_dp(num, n, dp)
 print(ans)
+
+
+# using tabulation DP
