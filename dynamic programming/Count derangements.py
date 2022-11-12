@@ -26,8 +26,8 @@ countDp = 0
 def checking_dp(n, dp):
     global countDp
     countDp += 1
-    if n <= 0:
-        return 1
+    if n <= 2:
+        return n-1
 
     if dp[n] != -1:
         return dp[n]
@@ -38,7 +38,25 @@ def checking_dp(n, dp):
     return maxi
 
 
-n = 2999
+def checking_dp_memo(n):
+    if n <= 2:
+        return n-1
+
+    dp = [0, 0, 1]
+
+    first = 0
+    second = 1
+
+    for i in range(3, n+1):
+        ans = (i-1)*(first+second)
+        first = second
+        second = ans
+        dp.append(ans)
+    return dp[-1]
+
+
+n = 51
 dp = [-1]*(n+1)
-print(checking(n), count)
-print(checking_dp(n, dp), countDp)
+# print(checking(n), count).,
+print(checking_dp(n, dp))
+print(checking_dp_memo(n))
