@@ -69,15 +69,53 @@ def wayPresentUsingDP(arr, total, tar, dp):
     return ans
 
 
-arr = [1, 5, 6]
+"""
+Time complexity : O(n^2)
+Space complexity : O(n)
+
+Without using total varible
+"""
+
+
+def solveDP(arr, tar, dp):
+    if tar < 0:
+        return 0
+    if tar == 0:
+        return 1
+    if dp[tar] != -4:
+        return dp[tar]
+    ans = 0
+    for data in arr:
+        if tar-data >= 0:
+            ans += solveDP(arr, tar-data, dp)
+
+    dp[tar] = ans
+    return ans
+
+
+"""
+Tabular form of DP
+
+"""
+
+
+def mini_step_tab(arr, tar):
+    dp = [0]*(tar+1)
+    dp[0] = 1
+    for i in range(1, tar+1):
+        for j in range(len(arr)):
+            if i-arr[j] >= 0:
+                dp[i] += dp[i-arr[j]]
+
+    return dp[-1]
+
+
+arr = [1, 5, 7, 6, 5, 2, 3, 69, 86]
 tar = 7
 dp = [-4]*(tar+1)
-print(wayPresent(arr, 0, tar))
 
-print("Answer using recursion is :", wayPresent(
-    arr, 0, tar), "and DP counts is : ", countSimple)
+print("Answer using recursion is :", wayPresent(arr, 0, tar))
 
-
-print("Answer using dp is :", wayPresentUsingDP(
-    arr, 0, tar, dp), "and DP counts is : ", countDP)
+print("Answer using dp is :", wayPresentUsingDP(arr, 0, tar, dp))
+print("Answer using tabular form :", mini_step_tab(arr, tar))
 # print("and DP counts is : ", countDP)
