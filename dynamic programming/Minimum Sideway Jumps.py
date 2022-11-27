@@ -57,6 +57,12 @@ def miniJumpDP(arr, curr, ind, dp):
     return ans
 
 
+"""
+Tabulation DP : 
+Bottom to Top approach
+"""
+
+
 def miniJumpDP_Tab(arr):
     n = len(arr)
     dp = [[sys.maxsize-9]*(n+1) for i in range(4)]
@@ -80,15 +86,41 @@ def miniJumpDP_Tab(arr):
 
                 dp[lane][i] = ans
 
-    print(dp[1])
-    print(dp[2])
-    print(dp[3])
     return min(dp[1][0]+1, dp[2][0], dp[3][0]+1)
 
 
+"""
+Space optimize solution
+"""
+
+
+def miniDP_space(arr):
+    n = len(arr)
+    curr = [0, 0, 0, 0]
+    next = [0, 0, 0, 0]
+
+    for i in range(n-1, -1, -1):
+        for currPos in range(1, 4):
+            if arr[i+1] != currPos:
+                curr[currPos] = next[currPos]
+
+            else:
+                ans = sys.maxsize
+                for currLane in range(1, 4):
+                    if currLane != currPos and arr[i] != currLane:
+                        local = next[currLane]
+                        ans = min(local, ans)+1
+
+                curr[currPos] = ans
+        next = curr
+    return curr
+
+
 obst = [0, 2, 1, 1, 3, 0]
+# obst = [0, 1, 2, 3, 0]
 n = len(obst)
-# dp = [-1]*(n)
-# print(miniJump(obst, 2, 0))
-# print(miniJumpDP(obst, 2, 0, dp))
+dp = [[-1]*(n+1) for i in range(4)]
+print(miniJump(obst, 2, 0))
+print(miniJumpDP(obst, 2, 0, dp))
 print(miniJumpDP_Tab(obst))
+print(miniDP_space(obst))
