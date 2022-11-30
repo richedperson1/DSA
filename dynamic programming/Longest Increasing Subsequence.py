@@ -4,9 +4,10 @@ URL : https://practice.geeksforgeeks.org/problems/longest-increasing-subsequence
 import sys
 
 
-arr = [5, 8, 3, 7, 9, 1]
-
-# arr = [5, 1, 6]
+"""
+Time complexity : O(2^n)
+Space complexity : O(n)
+"""
 
 
 def longIncreasing(arr, ind, prev):
@@ -21,6 +22,13 @@ def longIncreasing(arr, ind, prev):
     else:
         exc = longIncreasing(arr, ind+1, prev)
         return exc
+
+
+"""
+Time complexity : O(n^2)
+Space complexity : O(n^2)
+
+"""
 
 
 def longIncreasingDP(arr, ind, prev, dp):
@@ -41,8 +49,82 @@ def longIncreasingDP(arr, ind, prev, dp):
     return dp[ind][prev]
 
 
-print(longIncreasing(arr, 0, -1))
+"""
+Time complexity : O(n^2)
+Space complexity : O(n^2)
+
+"""
+
+
+def lengthOfLIS(arr: list[int]) -> int:
+    n = len(arr)
+    dp = [[0]*(n+1) for i in range(n+1)]
+    for curr in range(n-1, -1, -1):
+        for prev in range(curr-1, -2, -1):
+            take = 0
+            if prev == -1 or arr[curr] > arr[prev]:
+                take = dp[curr+1][curr+1]+1
+
+            notake = dp[curr+1][prev+1]
+            dp[curr][prev+1] = max(take, notake)
+
+    return dp[0][0]
+
+
+"""
+Time complexity : O(n^2)
+Space complexity : O(n)
+
+"""
+
+
+def spaceOptimizeDP(arr):
+    n = len(arr)
+    if n <= 0:
+        return 0
+    dp = [1]*(n+1)
+    for curr in range(n-1, -1, -1):
+        for next in range(curr+1, n):
+            if arr[curr] < arr[next]:
+                dp[curr] = max(dp[curr], 1+dp[next])
+
+    return max(dp)
+
+
+def binarySearchLong(arr):
+    if len(arr) < 1:
+        return 0
+    ans = [[arr[0]]]
+    n = len(arr)
+    j = 0
+    for i in range(1, n):
+        if ans[j][-1] < arr[i]:
+            ans[j].append(arr[i])
+        else:
+            j += 1
+            local = [arr[i]]
+            ans.append(local)
+            localN = len(ans)
+            for j in range(localN-1):
+                if ans[j][-1] > arr[i]:
+                    ans[j].insert(0, arr[i])
+
+    print(ans)
+    maxi = 0
+    for j in ans:
+        maxi = max(maxi, len(j))
+    return maxi
+
+
+arr = [5, 1, 6]
+arr = [5, 8, 3, 7, 9, 1]
+arr = [10, 9, 2, 5, 3, 7, 101, 18]
 n = len(arr)
-dp = [[-2]*(n+1) for i in range(n+1)]
-# print(dp[5][4])
+dp = [[-2]*(n+1) for i in range(n)]
+
+
+print(longIncreasing(arr, 0, -1))
+print(lengthOfLIS(arr))
+print(spaceOptimizeDP(arr))
+print(binarySearchLong(arr))
 print(longIncreasingDP(arr, 0, -1, dp))
