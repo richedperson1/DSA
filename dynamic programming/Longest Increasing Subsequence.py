@@ -91,34 +91,38 @@ def spaceOptimizeDP(arr):
     return max(dp)
 
 
+def findInd(arr, k):
+    low = 0
+    high = len(arr)-1
+    mid = 0
+    while low < high:
+        mid = (low+high)//2
+        if arr[mid] < k:
+            ans = mid
+            low = mid+1
+        else:
+            high = mid-1
+    return mid
+
+
 def binarySearchLong(arr):
     if len(arr) < 1:
         return 0
-    ans = [[arr[0]]]
+    ans = [arr[0]]
     n = len(arr)
-    j = 0
     for i in range(1, n):
-        if ans[j][-1] < arr[i]:
-            ans[j].append(arr[i])
+        if ans[-1] < arr[i]:
+            ans.append(arr[i])
         else:
-            j += 1
-            local = [arr[i]]
-            ans.append(local)
-            localN = len(ans)
-            for j in range(localN-1):
-                if ans[j][-1] > arr[i]:
-                    ans[j].insert(0, arr[i])
+            ind = findInd(ans, arr[i])
+            ans[ind] = arr[i]
 
-    print(ans)
-    maxi = 0
-    for j in ans:
-        maxi = max(maxi, len(j))
-    return maxi
+    return len(ans)
 
 
+arr = [10, 9, 2, 5, 3, 7, 101, 18]
 arr = [5, 1, 6]
 arr = [5, 8, 3, 7, 9, 1]
-arr = [10, 9, 2, 5, 3, 7, 101, 18]
 n = len(arr)
 dp = [[-2]*(n+1) for i in range(n)]
 
