@@ -6,25 +6,16 @@ n = 15
 
 
 def feboSimple(n):
-    global count
-    count += 1
     if n <= 2:
         return 1
     return feboSimple(n-1)+feboSimple(n-2)
 
 
-print("\nWith simple solution following is answer ")
-print(f"{n}th febo series is : ", feboSimple(n))
-print("Number of recursion call is : ", count)
-print()
-print("--"*20)
 # with DP solution
 count1 = 0
 
 
 def feboDP(n):
-    global count1
-    count1 += 1
     if n <= 2:
         return 1
 
@@ -36,12 +27,18 @@ def feboDP(n):
 
 
 arr = [0]*(n+1)
-print("\nWith DP solution following is answer ")
-print(f"{n}th febo series is : ", feboDP(n))
-print("Number of recursion call is : ", count1)
 
+
+def nthFibonacci(num):
+    dp = [1]*3
+    for n in range(3, num):
+        local = dp[n-1]+dp[n-2]
+        dp.append(local)
+
+    return dp[-1]
 
 # Febo series using varible
+
 
 def feboTabular(n):
     if n <= 1:
@@ -59,6 +56,9 @@ def feboTabular(n):
     return temp
 
 
-print("\nWith DP Tabular format is answer ")
-print(f"{n}th febo series is : ", feboTabular(n))
-print("Number of recursion call is : ", n)
+n = 4
+print(nthFibonacci(n))
+print(feboTabular(n))
+# print("\nWith DP Tabular format is answer ")
+# print(f"{n}th febo series is : ", feboTabular(n))
+# print("Number of recursion call is : ", n)
