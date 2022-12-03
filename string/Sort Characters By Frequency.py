@@ -30,8 +30,34 @@ def frequencySort(s: str) -> str:
     return ans
 
 
+"""
+Bucket sort technique
+"""
+
+
+"""
+Time complexity : O(n)
+space complexity : O(n)
+"""
+
+
+def freqSort(s):
+    final = Counter(s)
+    n = len(final)
+    bucket = [[] for i in range(n+1)]
+    for word, repeat in final.items():
+        bucket[repeat].append(word)
+
+    finalAns = ""
+    for num in range(n, 0, -1):
+        for letter in bucket[num]:
+            finalAns += letter*num
+    return finalAns
+
+
 string = "aabbcccdA"
 final = sortbyFreq(string)
 final2 = frequencySort(string)
+print(freqSort(string))
 print(final)
 print(final2)
