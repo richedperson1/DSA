@@ -50,8 +50,6 @@ count1 = 0
 
 
 def maximum_sum_var(arr, local, ans, i, flag):
-    global count1
-    count1 += 1
     if i >= len(arr):
         ans = max(ans, local)
         return ans
@@ -67,12 +65,9 @@ def maximum_sum_var(arr, local, ans, i, flag):
 
 
 ans = 0
-count = 0
 
 
 def maximum_sum_var2(arr, local, ans, i,):
-    global count
-    count += 1
 
     if i >= len(arr):
         ans = max(ans, local)
@@ -133,11 +128,36 @@ def maximum_sum_using_dp(arr, dp, n):
     return dp[n]
 
 
+def FindMaxSum(arr):
+    n = len(arr)
+    dp = [0]*(n+4)
+
+    for i in range(n-1, -1, -1):
+        ans1 = dp[i+2]+arr[i]
+        ans2 = dp[i+1]
+        dp[i] = max(ans1, ans2)
+    return dp[0]
+
+
+def findMaxSumTabOptimize(arr):
+    first = 0
+    second = 0
+    n = len(arr)
+    curr = 0
+    for i in range(n-1, -1, -1):
+        ans1 = second+arr[i]
+        ans2 = first
+        curr = max(ans1, ans2)
+        second = first
+        first = curr
+
+    return max(first, second)
+
+
 num = len(arr)
 dp = [0]*(num+1)
 print(maximum_sum_using_dp(arr, dp, num-1))
 print(counting)
-
 
 """
 
