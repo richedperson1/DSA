@@ -1,4 +1,6 @@
+# Hi, I'm Rutvik ! 👋
 
+``` Solve a Quection a day, keep fear away```
 # DSA 
 
 Daily I try to solve new coding question related to the SDE interview on the repository.
