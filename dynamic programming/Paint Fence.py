@@ -3,6 +3,14 @@ URL : https://practice.geeksforgeeks.org/problems/painting-the-fence3727/1?utm_s
 """
 
 
+def countWay2(n, k):
+    if n <= 2:
+        return n
+
+    final = (countWay2(n-1, k)+countWay2(n-2, k))*(k-1)
+    return final % (10**9+7)
+
+
 """
 Time complexity : O(n)
 space complexity : O(1)
@@ -22,3 +30,4 @@ def paintFenceOptimize(n, k):
 
 
 print(paintFenceOptimize(5, 3))
+print(countWay2(5, 3))
