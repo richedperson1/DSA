@@ -41,8 +41,8 @@ def countFriendsPairings(n):
     return dp[-1]
 
 
-n = 10000
+n = 4
 # print(friendPair(n)).
 dp = [-1]*(n+1)
-# print(friendPairDP(n, dp))
+print(friendPairDP(n, dp))
 print(countFriendsPairings(n))

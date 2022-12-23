@@ -4,11 +4,15 @@ URL : https://practice.geeksforgeeks.org/problems/painting-the-fence3727/1?utm_s
 
 
 def countWay2(n, k):
-    if n <= 2:
-        return n
+    if n <= 0:
+        return 0
+    if n == 1:
+        return k
+    if n == 2:
+        return k*(k-1)+k
 
     final = (countWay2(n-1, k)+countWay2(n-2, k))*(k-1)
-    return final % (10**9+7)
+    return final
 
 
 """
@@ -21,7 +25,7 @@ def paintFenceOptimize(n, k):
 
     similar, different = 0, k
     total = k
-    for i in range(2, n):
+    for i in range(2, n+1):
         similar = different
         different = total*(k-1)
         total = similar+different
