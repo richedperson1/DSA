@@ -76,6 +76,7 @@ def sumsetDP(arr, sumi, ind, dp):
 
 
 arr = [13, 34, 4, 12, 5]
+
 n = len(arr)
 
 for sumi in range(1, 20):
