@@ -18,26 +18,24 @@ def checkingIndex(arr, low, high, k):
 class SummaryRanges:
 
     def __init__(self):
-        self.stack = []
-        self.dist = {}
+        self.start = {}
 
     def addNum(self, value: int) -> None:
-        n = len(self.stack)
-        if n == 0:
-            self.stack.append(value)
-            return
-
-        if value in self.dist:
-            return
-        self.dist[value] = 1
-        ind = checkingIndex(self.stack, 0, n-1, value)
-        self.stack.insert(ind, value)
-        return
+        self.start[value] = True
 
     def getIntervals(self):
+        res = []
+        listing = sorted(self.start)
+        for n in listing:
+            if res and res[-1][1]+1 == n:
+                res[-1][1] = n
+            else:
+                res.append([n, n])
 
-        pass
+        return res
 
 
 arr = [1, 2, 3, 4]
-# print(checkingIndex(arr, 0, 3, 8.5)).
+
+dist = {1: True, 0: False, 6: "A", 8: 6}
+print(sorted(dist))
