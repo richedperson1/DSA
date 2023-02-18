@@ -6,7 +6,7 @@ def minDiffInBST(self, root):
         if node is None:
             return
         inorder(node.left)
-        if self.prev is not None:
+        if self.prev:
             self.min_diff = min(self.min_diff, node.val - self.prev.val)
         self.prev = node
         inorder(node.right)
