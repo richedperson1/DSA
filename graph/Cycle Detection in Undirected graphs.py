@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+from collections import deque
 
 
 def adjecent(adj, edges):
@@ -9,3 +12,8 @@ def adjecent(adj, edges):
         adj[v].append(u)
 
     return adj
+
+
+def cycleDetect(edges, n):
+    que = defaultdict(list)
+    adj_list = adjecent(que, edges)
