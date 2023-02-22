@@ -1,4 +1,38 @@
-list = set([2, 3, 4])
+from collections import defaultdict
 
-list.add(8)
-print(list)
+from collections import deque
+
+
+def adjecent(adj, edges):
+    n = len(edges)
+    for num in range(n):
+        u = edges[num][0]
+        v = edges[num][1]
+        adj[u].append(v)
+        adj[v].append(u)
+
+    return adj
+
+
+def cyclePreset(node, parent, visited, adj):
+    visited[node] = True
+    for child in adj[node]:
+        if visited[child] == False and cyclePreset(child, node, visited, adj):
+            # if cyclePreset(child, node, visited, adj):
+            return True
+
+        elif child != parent:
+            return True
+    return False
+
+
+def cycle(edge, v):
+    adj = defaultdict(list)
+    adj = adjecent(adj, edge)
+    visited = defaultdict(bool)
+    for ind in range(v):
+        if visited[ind] == False:
+            if cyclePreset(ind, -1, visited, adj):
+                return True
+
+    return False
