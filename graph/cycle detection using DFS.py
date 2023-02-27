@@ -17,9 +17,9 @@ def adjecent(adj, edges):
 def cyclePreset(node, parent, visited, adj):
     visited[node] = True
     for child in adj[node]:
-        if visited[child] == False and cyclePreset(child, node, visited, adj):
-            # if cyclePreset(child, node, visited, adj):
-            return True
+        if visited[child] == False:
+            if cyclePreset(child, node, visited, adj):
+                return True
 
         elif child != parent:
             return True
