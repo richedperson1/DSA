@@ -1,7 +1,7 @@
 """
 URL : https://leetcode.com/problems/find-duplicate-subtrees/description/
 """
-from collections import *
+from collections import defaultdict
 visit = defaultdict(str)
 ans = []
 
