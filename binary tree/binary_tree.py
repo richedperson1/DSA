@@ -8,17 +8,17 @@ class root:
         self.right = None
 
     @staticmethod
-    def print_tree(root):
-        if root == None:
+    def print_tree(nodes):
+        if nodes == None:
             return
-        print(root.data, end=" : ")
-        if root.left != None:
-            print(" L : ", root.left.data, end=' ')
-        if root.right != None:
-            print(" R ", root.right.data, end="")
+        print(nodes.data, end=" : ")
+        if nodes.left != None:
+            print(" L : ", nodes.left.data, end=' ')
+        if nodes.right != None:
+            print(" R ", nodes.right.data, end="")
         print()
-        root.print_tree(root.left)
-        root.print_tree(root.right)
+        root.print_tree(nodes.left)
+        root.print_tree(nodes.right)
 
 
 class createTree:
