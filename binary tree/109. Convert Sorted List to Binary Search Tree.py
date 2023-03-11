@@ -15,6 +15,7 @@ class treeNode:
 
 lst = [1, 2, 3, 4, 5, 6]
 lst = [1, 2, 3, 4, 5, 6, 7]
+lst = [-10, -3, 0, 5, 9]
 
 
 def add_elemet(arr, low, high):
@@ -29,5 +30,5 @@ def add_elemet(arr, low, high):
     return newNode
 
 
-new_tree = add_elemet(lst, 0, len(lst)-1)
+new_tree = add_elemet(lst, 0, len(lst))
 root.print_tree(new_tree)
