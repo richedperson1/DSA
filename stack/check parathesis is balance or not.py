@@ -1,3 +1,8 @@
+"""
+URL : https://leetcode.com/problems/valid-parentheses/
+"""
+
+
 def ispar(x):
     # code here
     arr = [x[0]]
@@ -22,6 +27,24 @@ def ispar(x):
         return True
 
     return False
+
+
+def checking_valid_bracket(s):
+
+    dist = {")": "(", "}": "{", "]": "["}
+
+    opening = "({["
+    stack = []
+    for br in s:
+        if br in opening:
+            stack.append(br)
+
+        elif stack and stack[-1] == dist[stack[-1]]:
+            stack.pop()
+        else:
+            return False
+
+    return stack == []
 
 
 chec = "({[]})"
