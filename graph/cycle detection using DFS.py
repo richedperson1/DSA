@@ -36,3 +36,8 @@ def cycle(edge, v):
                 return True
 
     return False
+
+
+v = 2
+edge = [[0, 1], [1, 0]]
+print(cycle(edge, v))
