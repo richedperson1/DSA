@@ -87,3 +87,7 @@ class cloning:
         cloneItem = self.clone(fromReplication, {None: None})
         self.cloneTree(fromReplication, cloneItem)
         return cloneItem[fromReplication]
+
+
+if __name__ == "__main__":
+    pass
