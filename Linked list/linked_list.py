@@ -8,7 +8,7 @@ class node:
 
 
 class linked:
-    def __init__(self, head):
+    def __init__(self, head=None):
         if head == None:
             self.head = node("start")
         else:
