@@ -62,10 +62,10 @@ def miniJump(arr):
 
 
 arr = [[0],[1,2,3],[3],[5,4,3,2,1],[654,81,81,98,84,84,987,81,654,98,6],[1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9],[1, 4, 3, 2, 6, 7],
-       [3,2,2,1,4,5]]
+       [3,2,2,1,4,5],[2,0,0,3],[1,0,0,0],[2,0,0]]
 
 
 for subArr in arr:
     first = miniJump(subArr)
     second = miniJumpRecursion(subArr)
-    print(first==second)
+    print(first,second)
