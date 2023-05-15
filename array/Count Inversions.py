@@ -23,7 +23,7 @@ sorted so there is no inversion count.
 
 # Naive Approach
 # arr = [2, 1, 3, 1, 6, 0]
-arr = [2, 1, 4, 3, 5]
+# arr = [2, 1, 4, 3, 5]
 
 
 def check_invetion(arr):
@@ -37,4 +37,58 @@ def check_invetion(arr):
     return total
 
 
+"""
+Time complexity : O(n.log(n))
+Space complexity : O(n)
+"""
+
+def checkInvetion(arr):
+
+    totalAns = 0
+
+    def inversionCount(arr):
+        nonlocal totalAns
+        if len(arr)<=1:
+            return totalAns
+
+        size = len(arr)
+
+        left  = arr[:size//2]
+        right = arr[size//2:]
+        inversionCount(left)
+        inversionCount(right)
+
+        numI = len(left)
+        numJ = len(right)
+        numK = len(arr)
+        i ,j,k = 0,0,0
+        
+        while i<numI and j<numJ:
+            if left[i]>right[j]:
+                totalAns+=(numI-i)
+            a = 0
+            if left[i]>right[j]:
+                arr[k] = right[j]
+                j+=1
+            else:
+                arr[k] = left[i]
+                i+=1
+            k+=1
+        
+        while i<numI:
+            arr[k] = left[i]
+            i+=1
+            k+=1
+
+        while j<numJ:
+            arr[k] = right[j]
+            j+=1
+            k+=1
+
+        return totalAns
+    return  inversionCount(arr)    
+   
+
+arr = [1,8,3,2,1]
 print(check_invetion(arr))
+print(checkInvetion(arr))
