@@ -9,6 +9,10 @@ arr = [3,2,4]
 tar = 7
 
 
+"""
+Time complexity : O(n^2)
+Time complexity : O(1)
+"""
 def bruteForceApproach():
     try:
 
@@ -21,8 +25,24 @@ def bruteForceApproach():
     
     except Exception as e:
         return e
-    
 
+"""
+Time complexity : O(n)
+Time complexity : O(n)
+"""
+
+
+def twoSum( arr: list[int], tar: int):
+    
+    dist = {}
+    curr = 0
+    for ind,data in enumerate(arr):
+        curr = data
+        require = tar - curr
+        if require in dist:
+            return [dist[require],ind]
+        
+        dist[curr] = ind
 
 
 if __name__=="__main__":
