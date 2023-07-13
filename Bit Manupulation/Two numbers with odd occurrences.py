@@ -1,8 +1,8 @@
 def twoOddNum( Arr, N):
     bitCheck = 0
+    
     for data in Arr:
         bitCheck =bitCheck ^ data
-        
 
     newBit = bitCheck & (bitCheck+1)
     x = 0
