@@ -1,10 +1,8 @@
+
+
 from collections import deque
+
 def nearest( grid):
-    #Code here
-    
-# 		def bfs(row,col):
-        
-    
     rows = len(grid)
     cols = len(grid[0])
     
