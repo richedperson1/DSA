@@ -16,6 +16,9 @@ def adjecentlist(edges):
     return adj_list
 
 
+
+
+
 def helper(node, visited, adj, final):
     visited[node] = True
     childNode = adj[node]
@@ -39,7 +42,5 @@ def cycle_Detect(adjenet, vertex):
 
 
 arr = [[1, 2], [1, 3], [2, 3]]
-
-# listing = adjecentlist(arr)
 
 print(cycle_Detect(arr, 3))
