@@ -1,7 +1,15 @@
-from collections import defaultdict,deque
-adj = [[0,1,1],[0,2,3],[1,2,1],[2,3,3]]
+from collections import deque
 
-adjList = [[(1,1),(2,3)],[(2,1)],[(3,3)],[],[]]
+"""
+Shortest path from src to destination Using BFS
+"""
+
+"""
+Time complexity : O(n*m)
+n : # of node
+m : # of edges
+"""
+adj = [[0,1,1],[0,2,3],[1,2,1],[2,3,3]]
 n = 5
 
 def adjlist1(adj,n):
@@ -31,5 +39,28 @@ def shortestDistance(adjList,n):
         if data >=float('inf'):
             ans[ind] = -1
     return ans
-            
+
+
+"""
+Shortest path using
+"""
+
+def shortestPathDFS(adjList,n):
+    ans = [float("inf")]*(n)
+    ans[0] = 0
+    def dfs(src):
+        for child in adjList[src]:
+            local = ans[src]+child[-1]
+            if local<ans[child[0]]:
+                ans[child[0]] = min(local,ans[child[0]])
+                dfs(child[0])
+    
+    dfs(0)
+    for ind,data in enumerate(ans):
+        if data >=float('inf'):
+            ans[ind] = -1
+    return ans
+    
+adjList = adjlist1(adj,n)     
 print(shortestDistance(adjList,n))
+print(shortestPathDFS(adjList,n))
