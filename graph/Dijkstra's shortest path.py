@@ -54,6 +54,26 @@ def dijstra_algo(edges, vert, src):
 
     return dist
 
+def shortPath2(edges,n):
+    adj = [[] for ind in range(n+1)]
+    for data in edges:
+        u,v,w = data
+        adj[u].append([v,w])
+        adj[v].append([u,w])
+    
+        
+    dist = [float("inf")]*(n+1)
+    dist[1] = 0
+    def dfs(node):
+        for child in adj[node]:
+            childNode,childWeight = child
+            localWeight = dist[node]+childWeight
+            if localWeight < dist[childNode]:
+                dist[childNode] = localWeight
+                dfs(childNode)
+
+    dfs(1)
+    return dist[1:]
 
 V = 3
 E = 3
@@ -66,3 +86,8 @@ print(answer)
 # heappush(actual, nodeClass(7, 5))
 
 # print(heappop(actual))
+
+n = 5 
+m= 6
+edges = [[1,2,2], [2,5,5], [2,3,4], [1,4,1],[4,3,3],[3,5,1]]
+print(shortPath2(edges,n))
