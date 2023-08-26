@@ -144,5 +144,8 @@ grid = [[1,0,1,1,0],
         [0,0,1,1,1]]
 source = [0, 0]
 destination = [0, 2]
-print(shortestPath(grid,source,destination))
-print(shortestPath1(grid,source,destination))
+n,m = len(grid),len(grid[0])
+dist = [[float("inf")]*n for ind in range(m)]
+print(dist)
+# print(shortestPath(grid,source,destination))
+# print(shortestPath1(grid,source,destination))
