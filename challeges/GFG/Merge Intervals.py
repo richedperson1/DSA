@@ -7,7 +7,7 @@ def merge( arr: List[List[int]]) -> List[List[int]]:
     ans =[]
 
     num = len(arr)
-    for ind in range(num):
+    for ind in range(len(arr)):
         start = arr[ind][0]
         end   = arr[ind][1]
 
