@@ -5,6 +5,8 @@ grid = [ind for ind in range(1,26)]
 
 grid = np.array(grid).reshape(-1,int(len(grid)**0.5))
 def rotateImg(grid):
+    # The code you provided is a function called `rotateImg` that takes a 2D grid as input and rotates it
+    # in a clockwise direction.
 
     rowEnd = len(grid)-1
 
