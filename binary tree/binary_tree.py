@@ -4,6 +4,7 @@ import queue
 class root:
     def __init__(self, data):
         self.data = data
+        self.val = data
         self.left = None
         self.right = None
 
@@ -19,7 +20,8 @@ class root:
         print()
         root.print_tree(nodes.left)
         root.print_tree(nodes.right)
-
+    def __repr__(self) -> str:
+        return f"Node data is : {self.data}"
 
 class createTree:
     def createTreeUser(self) -> root:
