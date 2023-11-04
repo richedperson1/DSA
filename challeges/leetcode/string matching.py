@@ -21,6 +21,18 @@ def stringMatch(s,pattern):
     return True
 
 class Solution:
+
+    """
+    The `wordPattern` function checks if a given string `s` follows a given pattern by mapping each
+    character in `s` to a word in `pattern` and vice versa.
+    
+    :param s: A string representing a sequence of characters
+    :type s: str
+    :param pattern: The `pattern` parameter is a string representing a pattern of characters. It is
+    split into a list of words using the `split()` method
+    :return: a boolean value.
+    """
+
     def wordPattern(self, s: str, pattern) -> bool:
         pattern  = pattern.split()
         distW2C = {}
