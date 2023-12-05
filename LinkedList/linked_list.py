@@ -10,7 +10,7 @@ class node:
 class linked:
     def __init__(self, head=None):
         if head == None:
-            self.head = node("start")
+            self.head = None
         else:
             self.head = head
 
@@ -38,6 +38,7 @@ class linked:
             first_node = node(arr[0])
             flag = True
             curr = first_node
+            self.head = curr
         else:
             flag = False
             curr = self.head
@@ -48,6 +49,7 @@ class linked:
                 if ind == 0:
                     continue
                 new = node(num)
+                # print(curr)
                 curr.next = new
                 curr = new
         else:
@@ -58,12 +60,13 @@ class linked:
         self.tail = new
         return self.head
 
-    def printing_linked_list(self):
+    def printing_linked_list(self,head=None):
         """
         This function printing linked list elements
 
         """
-        curr = self.head
+        # print(self.head,head)
+        curr = self.head if not head else head
         while curr is not None:
             if curr.next is None:
                 print(curr.data, end="")
