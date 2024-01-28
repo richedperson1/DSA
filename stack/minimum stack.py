@@ -1,5 +1,9 @@
 class MinStack:
 
+    """
+    The above code defines a class that implements a stack data structure with additional functionality
+    to keep track of the minimum element in the stack.
+    """
     def __init__(self):
         self.stack = []
         self.mini  = []
@@ -24,5 +28,3 @@ class MinStack:
 
     def getMin(self) -> int:
         return self.mini[-1][0]
-
-
