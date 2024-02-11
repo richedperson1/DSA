@@ -1,6 +1,14 @@
 
 from binary_tree import *
 
+"""
+The function `maxProduct` calculates the maximum product of the sums of two disjoint subtrees in a
+binary tree.
+
+:param root: The parameter "root" is the root node of a binary tree
+:return: The function `maxProduct` returns an integer, which represents the maximum product of two
+subtrees in the given binary tree.
+"""
 def maxProduct( root) -> int:
 
     dist = {}
