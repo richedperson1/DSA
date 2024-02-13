@@ -13,7 +13,6 @@ class Solution:
             if left or right:
                 ans.add(root)
                 return True
-            co
             if root.val==tar:
                 return True
             return False
