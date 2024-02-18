@@ -1,4 +1,8 @@
 from binary_tree import *
+
+# The class `Solution` contains a method `recoverTree` that modifies a binary search tree in-place to
+# recover it from being incorrectly swapped.
+
 class Solution:
     def recoverTree(self, root) -> None:
         """
