@@ -36,10 +36,28 @@ class Solution:
         inorder_tree(root)
         root.print_tree(root)
         return root
-    
+    def recoverTree2(self, root) -> None:
+        start,prev,last = None,None,None
+        def dfs(root):
+            nonlocal start,last,prev
+            if not root:
+                return
+            dfs(root.left)
+            if prev and prev.val>root.val:
+                if not start:
+                    start = prev
+                last = root
+            prev = root
+            dfs(root.right)
+        
+        dfs(root)
+        if start and last:
+            start.val,last.val = last.val,start.val
+            
 null = -1
-arr = [1,3,null,null,2]
+arr = [5,3,10,6,null,2,11]
 tree = createTree().createTreeUsingList(arr)
-obj = Solution().recoverTree(tree)
+obj = Solution().recoverTree2(tree)
+root.print_tree(tree)
             
 # root.print_tree(obj)
