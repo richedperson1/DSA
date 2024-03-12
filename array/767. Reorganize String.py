@@ -39,6 +39,16 @@ class Solution:
         return "".join(final_out)
     
     def reorganizeString2(self,string:str)->str:
+        """
+        The function reorganizes a given string by rearranging its characters such that no two adjacent
+        characters are the same.
+        
+        :param string: The code you provided seems to be attempting to reorganize a string by rearranging
+        its characters based on their frequencies. However, there are a few issues in the code that need to
+        be addressed
+        :type string: str
+        :return: a reorganized version of the input string where no two adjacent characters are the same.
+        """
         
         count = Counter(string)
         
