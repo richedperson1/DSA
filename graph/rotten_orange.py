@@ -1,5 +1,16 @@
 from collections import deque
 class Solution:
+    
+    """
+    The function `orangesRotting` implements a breadth-first search algorithm to determine the maximum
+    time taken for all oranges in a grid to rot, with each minute causing adjacent fresh oranges to rot
+    as well.
+    
+    :param grid: It looks like you have provided a code snippet for a function that performs a BFS
+    (Breadth-First Search) traversal on a grid to simulate the rotting of oranges. The function seems to
+    be incomplete, but I can help you understand and complete it
+    """
+    
     def orangesRotting(self,grid):
         rows = len(grid)
         cols = len(grid[0])
