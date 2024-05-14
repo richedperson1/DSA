@@ -2,44 +2,82 @@
 
 from typing import List
 from collections import defaultdict,deque
+from queue import PriorityQueue
 import sys
+
+class customerPQ(PriorityQueue):
+    def __len__(self):
+        return len(self.queue)
+    
 class Solution:
-    def countPaths(self, n: int, roads: List[List[int]]) -> int:
-        #Your code here
-        
+    def countPaths(self, n: int, roads: List[List[int]]) -> int:       
+         
         adj = defaultdict(list)
-        
         for start,end,weight in roads:
             adj[start].append([end,weight])
+            adj[end].append([start,weight])
             
         
-        dist = defaultdict(list)
+        dist = defaultdict(lambda : float("inf"))
+        ways = defaultdict(int)
         
-        dq = deque()
-        dq.append([0,0])
+        ways[0] = 1
+        dist[0] = 0
         
-        current = defaultdict(lambda :float("inf"))
-        print(adj)
-        current[0] = 0
-        print(dq)
-        while len(dq)>0:
-            weight,node = dq.popleft()
-            print(weight,node)
-            if node==n-1:
-                dist[weight].append(node)
+        dq = customerPQ()
+        dq.put([0,0])
+        mod = 10**9 + 7
+        while len(dq):
+            Nweight,node = dq.get()
+            for childNode,childWeight in adj[node]:
+                totalWeight = childWeight+Nweight
+                
+                if dist[childNode]>totalWeight:
+                    ways[childNode] = ways[node]
+                    dist[childNode] = totalWeight
+                    dq.put([totalWeight,childNode])
+                
+                elif dist[childNode]==totalWeight:
+                    ways[childNode] = (ways[childNode]+ways[node])%mod
+        
+        return ways[n-1]%mod
+
+class Solution:
+    def countPaths(self, n: int, roads: List[List[int]]) -> int:
+
+        adj = defaultdict(list)
+        
+        for dataNode in roads:
+            src,dest,weight = dataNode
             
-            for child in adj[node]:
-                
-                cnode,cweight = child
-                
-                if cweight+weight>current[cnode]:
-                    current[cnode] = cweight+weight
-                    dq.append([cweight+weight, cnode])
+            adj[src].append((dest,weight))
+            adj[dest].append((src,weight))
+
+        pq = PriorityQueue()
+        pq.put((0,0))
         
-        
-        print(dist)
-    
-n = 7
+        dist = defaultdict(lambda : float("inf"))
+        ways = defaultdict(int)
+        ways[0] = 1
+        dist[0] = 0
+        mod = 10**9 + 7
+        while pq.empty()!=True:
+            
+            nWeight,node = pq.get()
+            
+            for childNode,weight in adj[node]:
+                
+                localWeight = weight+nWeight
+                
+                if localWeight < dist[childNode]:
+                    ways[childNode] = ways[node]
+                    dist[childNode] = localWeight
+                    pq.put((localWeight,childNode))
+                    
+                elif localWeight== dist[childNode]:
+                    ways[childNode] = (ways[node] +ways[childNode])%mod
+                    
+        return ways[n-1]%mod
 
 n=7
 m=10
