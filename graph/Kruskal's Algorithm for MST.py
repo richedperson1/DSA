@@ -40,7 +40,6 @@ def mstUsingMST(vi,adj):
             u = ind
             pq.append((w,u,v))
 
-    return pq      
     dis = disJointSet(vi)
     total = 0
     while pq:
