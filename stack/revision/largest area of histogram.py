@@ -64,3 +64,5 @@ arr = list(map(int,'9 10 4 10 4 5 16'.split()))
 print(arr)
 
 print(getMaxArea(arr))
+
+
