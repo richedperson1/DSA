@@ -65,7 +65,24 @@ class createTree:
 
         return rootNode
 
-
+    def createTreeUsingStrGFG(self,string):
+        arr = []
+        padding1 = 0
+        for char in string.split():
+            if char=="N" or char=="n":
+                arr.append(-1)
+                padding1 -=1
+            else:
+                padding1+=2
+                arr.append(int(char))
+        
+        try:
+            arr.extend([-1]*(padding1))
+            return self.createTreeUsingList(arr)
+        except Exception as e:
+            print("error occure : ",e)
+            return arr
+                
 class cloning:
     def clone(self, nodes, dist):
         if nodes == None:
