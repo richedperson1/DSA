@@ -2,6 +2,8 @@ class Solution:
     def maxPoints(self, arr: List[List[int]]) -> int:
         # This code snippet is implementing a dynamic programming solution to solve a problem. Here's a
         # breakdown of what the code is doing:
+        
+        
 
         rows ,cols = len(arr),len(arr[0])
 
