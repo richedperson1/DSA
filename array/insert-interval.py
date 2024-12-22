@@ -3,8 +3,6 @@ class Solution:
     def insertInterval(self, intervals, newInterval):
         # Code here
         new_result = []
-        start = float("inf")
-        end = -float("inf")
         first = 1
         for interval in intervals:
             if interval[1]<newInterval[0]:
