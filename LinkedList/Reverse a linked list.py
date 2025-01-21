@@ -51,6 +51,15 @@ def reverse_ll_recur(head, prev):
     head = next
     return reverse_ll_recur(head, prev)
 
+def reverse_linked_list_recursive(head):
+    if head ==None or head.next==None:
+        return head
+    
+    nxt = reverse_linked_list_recursive(head.next)
+    
+    nxt.next = head
+    head.next = None
+    return head
 
 def reverse_ll_recursion(head):
     return reverse_ll_recur(head, prev=None)

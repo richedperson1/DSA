@@ -36,6 +36,8 @@ class linked:
 
         if self.head == None:
             first_node = node(arr[0])
+            if len(arr)==1:
+                return first_node
             flag = True
             curr = first_node
             self.head = curr
@@ -57,6 +59,7 @@ class linked:
                 new = node(num)
                 curr.next = new
                 curr = new
+        
         self.tail = new
         return self.head
 
@@ -75,7 +78,7 @@ class linked:
             curr = curr.next
         print('')
 
-    def printing_linked_list_external(head):
+    def printing_linked_list_external(self,head):
         """
         This function printing linked list elements
 
@@ -89,7 +92,7 @@ class linked:
             curr = curr.next
         print('')
 
-    def printing_circular_linked_list_external(head):
+    def printing_circular_linked_list_external(self,head):
         """
         This function printing linked list elements
 
